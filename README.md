@@ -4,14 +4,14 @@ A lightweight, fault-tolerant **CLI tool** to fetch and transform public issue d
 
 ---
 
-## 🔍 Overview
+##  Overview
 
 The scraper collects issues, comments, and metadata from **Apache Kafka**, **Spark**, and **Hadoop**, handling retries, pagination, and malformed data gracefully.  
 Results are persisted to **Supabase** and exported as clean **JSONL corpora** for multiple task types — perfect for LLM fine-tuning or analytics.
 
 ---
 
-## ⚙️ Quick Start
+##  Quick Start
 
 ```bash
 # 1. Install dependencies
@@ -60,7 +60,7 @@ node src/cli.js export KAFKA --output-dir=./output
        └──────────────────────────────────────────────────────┘
 
 ```
-## 🧩 Core Components
+##  Core Components
 
 | Module | Responsibility |
 |:--------|:----------------|
@@ -71,16 +71,16 @@ node src/cli.js export KAFKA --output-dir=./output
 
 ---
 
-## 📄 Output Format
+##  Output Format
 
 Each `.jsonl` line = one structured training record with metadata and task type.
 
 ### **Supported Task Types**
-- 📝 **Summarization** – summarize issue descriptions  
-- 🏷️ **Classification** – identify issue type & priority  
-- 💬 **Q&A** – generate question–answer pairs from issue context  
-- 🧠 **Discussion Analysis** – extract insights from threaded comments  
-- ⚙️ **Key Extraction** – extract technical entities and keywords  
+-  **Summarization** – summarize issue descriptions  
+-  **Classification** – identify issue type & priority  
+-  **Q&A** – generate question–answer pairs from issue context  
+-  **Discussion Analysis** – extract insights from threaded comments  
+-  **Key Extraction** – extract technical entities and keywords  
 
 ### **Example Output Structure**
 output/
@@ -91,26 +91,26 @@ output/
 
 ---
 
-## 🛡️ Reliability & Edge Handling
+##  Reliability & Edge Handling
 
-- ✅ Retries on 429 / 5xx with **exponential backoff**
-- 💾 **State checkpointing** for resumable scrapes
-- 🧩 **Recursive ADF text extraction**
-- ♻️ **Idempotent DB writes** (upsert by issue key)
-- 🧯 **Graceful handling** of null / malformed data
+-  Retries on 429 / 5xx with **exponential backoff**
+-  **State checkpointing** for resumable scrapes
+-  **Recursive ADF text extraction**
+-  **Idempotent DB writes** (upsert by issue key)
+-  **Graceful handling** of null / malformed data
 
 ---
 
 ## ⚡ Optimizations
 
-- 🚀 Request batching (**50 issues per call**)
-- ⏱️ Rate-limited queue (**10 req/s**)
-- 📄 Streaming JSONL export (**low memory footprint**)
-- 🔁 Incremental processing with saved scraper state
+-  Request batching (**50 issues per call**)
+-  Rate-limited queue (**10 req/s**)
+-  Streaming JSONL export (**low memory footprint**)
+-  Incremental processing with saved scraper state
 
 ---
 
-## 🧱 Tech Stack
+##  Tech Stack
 
 - **Node.js** 18+  
 - **Axios**, **p-queue**, **p-retry**  
@@ -119,15 +119,15 @@ output/
 
 ---
 
-## 🧭 Future Improvements
+##  Future Improvements
 
-- 🧵 Distributed scraping via **Redis queue**  
-- 🕒 Incremental updates using `updated_since` filter  
-- ☁️ Export formats: **Parquet**, **CSV**, **S3 upload**
+-  Distributed scraping via **Redis queue**  
+-  Incremental updates using `updated_since` filter  
+-  Export formats: **Parquet**, **CSV**, **S3 upload**
 
 ---
 
-## 📜 License
+##  License
 
 **MIT License**
 
