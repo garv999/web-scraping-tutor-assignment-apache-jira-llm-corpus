@@ -10,7 +10,35 @@ The scraper collects issues, comments, and metadata from **Apache Kafka**, **Spa
 Results are persisted to **Supabase** and exported as clean **JSONL corpora** for multiple task types — perfect for LLM fine-tuning or analytics.
 
 ---
+##  Project Layout
 
+```
+Scaler/
+├── src/                  # Main source code
+│   ├── cli.js            # CLI entrypoint for scraping/export/export
+│   ├── lib/
+│   │   └── supabase.js   # Supabase DB client and helpers
+│   ├── services/
+│   │   ├── database.js   # DB upsert, fetch, checkpoint logic
+│   │   ├── jira-client.js# Jira REST API wrapper (rate limit, retry)
+│   │   └── scraper.js    # Scraper logic, batching, state mgmt
+│   ├── transformers/
+│   │   ├── text-formatter.js # Converts raw data to JSONL tasks
+│   │   └── llm-formatter.js  # (Legacy shim, for compatibility)
+│   └── utils/
+│       └── logger.js     # Logging utility
+├── supabase/
+│   └── migrations/       # DB schema migrations (SQL)
+├── output/               # Exported JSONL files (created at runtime)
+├── .env                  # Supabase credentials (not committed)
+├── package.json          # Project metadata and dependencies
+├── README.md             # Project overview and usage
+├── QUICKSTART.md         # Step-by-step setup guide
+├── ARCHITECTURE.md       # Detailed design notes
+├── EXAMPLES.md           # Example outputs and usage
+├── EDGE_CASES.md         # Notable edge cases handled
+└── PROJECT_STRUCTURE.md  # (This layout, in detail)
+```
 ##  Quick Start
 
 ```bash
